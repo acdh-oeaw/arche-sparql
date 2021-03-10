@@ -38,6 +38,7 @@ $credentials = [
 ];
 
 $logFile = __DIR__ . '/log.csv';
+header('X-DEBUG: ' . json_encode($_SERVER));
 
 // check if the request is safe
 $authHeader = null;

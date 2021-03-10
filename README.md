@@ -14,7 +14,7 @@ To create new proxy for the Blazegraph database, clone this project to the new p
 - HELM_UPGRADE_EXTRA_ARGS --set ingress.tls.enabled=false --set service.url=yourdomainforthebgproxy.acdh-dev.oeaw.ac.at
 - K8S_SECRET_TRIPLESTORE_URL http://193.170.85.102:8080
 - K8S_SECRET_TRIPLESTORE_HOST_HEADER triplestore.acdh-dev.oeaw.ac.at
-- K8S_SECRET_CACHE_TIMEOUT 7*24*60*60
+- K8S_SECRET_CACHE_TIMEOUT 604800
 - K8S_SECRET_DB_NAME dbname
 - K8S_SECRET_DB_USER dbuser 
 - K8S_SECRET_DB_PASSWORD dbpassword
