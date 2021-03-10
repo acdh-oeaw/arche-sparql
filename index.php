@@ -26,8 +26,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-//$baseUrl = 'http://193.170.85.102:8080';
-//$hostHeader = 'triplestore-parthenos-cached.acdh-dev.oeaw.ac.at';
+header('X-DEBUG: ' . json_encode($_SERVER));
 $baseUrl = $_SERVER["TRIPLESTORE_URL"];
 $hostHeader = $_SERVER["TRIPLESTORE_HOST_HEADER"] ?? parse_url($baseUrl,  PHP_URL_HOST);
 $skipResponseHeaders = ['connection', 'keep-alive', 'proxy-authenticate', 'proxy-authorization', 'te', 'trailer', 'transfer-encoding', 'upgrade', 'host'];
