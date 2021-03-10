@@ -1,2 +1,9 @@
 RewriteEngine on
 RewriteRule ^.*$ index.php
+PassEnv CACHE_TIMEOUT
+PassEnv DB_NAME
+PassEnv DB_PASSWORD
+PassEnv DB_USER
+PassEnv TRIPLESTORE_HOST_HEADER
+PassEnv TRIPLESTORE_URL
+

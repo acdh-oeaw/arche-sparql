@@ -1,5 +1,7 @@
 # php proxy for Blazegraph
 
+## Deployment on Kubernetes
+
 To create new proxy for the Blazegraph database, clone this project to the new project, go to Gitlab --> Settings --> CI/CD --> Variables and add follwoing variables:
 
 - KUBE_NAMESPACE yournamespace
@@ -18,4 +20,9 @@ To create new proxy for the Blazegraph database, clone this project to the new p
 - K8S_SECRET_DB_NAME dbname
 - K8S_SECRET_DB_USER dbuser 
 - K8S_SECRET_DB_PASSWORD dbpassword
+
+## Deployment on docker-tools
+
+* Use `PHPL` environment
+* Set `CACHE_TIMEOUT`, `DB_NAME`, `DB_PASSWORD`, `DB_USER`, `TRIPLESTORE_HOST_HEADER` and `TRIPLESTORE_URL` env vars in the config.yaml using the `EnvVars` configuration property.
 
