@@ -26,15 +26,12 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-header('X-DEBUG: ' . json_encode($_SERVER));
 $baseUrl = $_SERVER["TRIPLESTORE_URL"];
 $hostHeader = $_SERVER["TRIPLESTORE_HOST_HEADER"] ?? parse_url($baseUrl,  PHP_URL_HOST);
 $skipResponseHeaders = ['connection', 'keep-alive', 'proxy-authenticate', 'proxy-authorization', 'te', 'trailer', 'transfer-encoding', 'upgrade', 'host'];
 $cacheDir = __DIR__ . '/cache';
 $cacheValid = $_SERVER["CACHE_TIMEOUT"] ?? 7*24*60*60; // in seconds
-$credentials = [
-  '/' . ($_SERVER["DB_NAME"] ?? '') => ($_SERVER["DB_USER"] ?? '') . ':' . ($_SERVER["DB_PASSWORD"] ?? ''),
-];
+$credentials = ($_SERVER["DB_USER"] ?? '') . ':' . ($_SERVER["DB_PASSWORD"] ?? ''),
 
 $logFile = __DIR__ . '/log.csv';
 
@@ -54,11 +51,7 @@ if ($method === 'POST') {
 }
 
 if (!$deny) {
-    foreach($credentials as $path => $i) {
-        if (preg_match('|^' . $path . '|', filter_input(\INPUT_SERVER, 'REQUEST_URI'))) {
-            $authHeader = 'Basic ' . base64_encode($i);
-        }
-    }
+    $authHeader = 'Basic ' . base64_encode($i);
 }
 // caching
 $hash = sha1(filter_input(\INPUT_SERVER, 'REQUEST_URI') . filter_input(\INPUT_SERVER, 'QUERY_STRING') . json_encode($_POST));
@@ -132,7 +125,6 @@ $options['on_headers'] = function(\GuzzleHttp\Psr7\Response $response) {
 
 $client                     = new \GuzzleHttp\Client($options);
 $url = $baseUrl . filter_input(\INPUT_SERVER, 'REQUEST_URI');
-header("X-DEBUG: ".json_encode([$method, $url, $headers]));
 $request = new \GuzzleHttp\Psr7\Request($method, $url, $headers, $input);
 
 // run the proxy request
