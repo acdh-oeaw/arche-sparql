@@ -31,7 +31,7 @@ $hostHeader = $_SERVER["TRIPLESTORE_HOST_HEADER"] ?? parse_url($baseUrl,  PHP_UR
 $skipResponseHeaders = ['connection', 'keep-alive', 'proxy-authenticate', 'proxy-authorization', 'te', 'trailer', 'transfer-encoding', 'upgrade', 'host'];
 $cacheDir = __DIR__ . '/cache';
 $cacheValid = $_SERVER["CACHE_TIMEOUT"] ?? 7*24*60*60; // in seconds
-$credentials = ($_SERVER["DB_USER"] ?? '') . ':' . ($_SERVER["DB_PASSWORD"] ?? ''),
+$credentials = ($_SERVER["DB_USER"] ?? '') . ':' . ($_SERVER["DB_PASSWORD"] ?? '');
 
 $logFile = __DIR__ . '/log.csv';
 
@@ -51,7 +51,7 @@ if ($method === 'POST') {
 }
 
 if (!$deny) {
-    $authHeader = 'Basic ' . base64_encode($i);
+    $authHeader = 'Basic ' . base64_encode($credentials);
 }
 // caching
 $hash = sha1(filter_input(\INPUT_SERVER, 'REQUEST_URI') . filter_input(\INPUT_SERVER, 'QUERY_STRING') . json_encode($_POST));
