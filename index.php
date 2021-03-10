@@ -33,7 +33,7 @@ $skipResponseHeaders = ['connection', 'keep-alive', 'proxy-authenticate', 'proxy
 $cacheDir = __DIR__ . '/cache';
 $cacheValid = $_SERVER["CACHE_TIMEOUT"] ?? 7*24*60*60; // in seconds
 $credentials = [
-  '/' . $_SERVER["DB_NAME"] => $_SERVER["DB_USER"] . ':' . $_SERVER["DB_PASSWORD"],
+  '/' . ($_SERVER["DB_NAME"] ?? '') => ($_SERVER["DB_USER"] ?? '') . ':' . ($_SERVER["DB_PASSWORD"] ?? ''),
 ];
 
 $logFile = __DIR__ . '/log.csv';
