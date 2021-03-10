@@ -1,6 +1,8 @@
+#!/usr/bin/php
 <?php
 $sizeLimit = $argv[1] ?? 1024 * 1024 * 512; // 512 MB
 $cacheDir = $argv[2] ?? __DIR__ . '/cache';
+echo "Assuring $cacheDir is not bigger than $sizeLimit bytes\n";
 
 $mtimes = $sizes = [];
 scan($cacheDir, $mtimes, $sizes);
