@@ -38,7 +38,6 @@ $credentials = [
 ];
 
 $logFile = __DIR__ . '/log.csv';
-header('X-DEBUG: ' . json_encode($_SERVER));
 
 // check if the request is safe
 $authHeader = null;
@@ -134,6 +133,7 @@ $options['on_headers'] = function(\GuzzleHttp\Psr7\Response $response) {
 
 $client                     = new \GuzzleHttp\Client($options);
 $url = $baseUrl . filter_input(\INPUT_SERVER, 'REQUEST_URI');
+header("X-DEBUG: ".json_encode([$method, $url, $headers]));
 $request = new \GuzzleHttp\Psr7\Request($method, $url, $headers, $input);
 
 // run the proxy request
