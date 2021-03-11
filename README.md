@@ -19,6 +19,7 @@ To create new proxy for the Blazegraph database, clone this project to the new p
 - K8S_SECRET_CACHE_TIMEOUT 604800
 - K8S_SECRET_DB_USER dbuser 
 - K8S_SECRET_DB_PASSWORD dbpassword
+- WEB_CONCURRENCY 8
 
 ## Deployment on docker-tools
 
