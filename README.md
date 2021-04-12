@@ -22,6 +22,11 @@ To create new proxy for the Blazegraph database, clone this project to the new p
 - K8S_MAX_CACHE_SIZE maximumCacheSizeInBytes
 - WEB_CONCURRENCY 8
 
+Some settings must be set up by hand in Rancher:
+
+* The `ID` label with a Redmine issue ID
+* Some health check settings (type `Command run inside the container exits with status 0`, command `/app/kubernetesCheck.sh`, it may also make sense to rise the default check interval to at least 60 seconds)
+
 ## Deployment on docker-tools
 
 * Use `PHPL` environment
