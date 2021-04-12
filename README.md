@@ -13,16 +13,17 @@ To create new proxy for the Blazegraph database, clone this project to the new p
 - DOCKER_HOST tcp://docker:2375/
 - DOCKER_DRIVER overlay2
 - CODE_QUALITY_DISABLED true 
-- HELM_UPGRADE_EXTRA_ARGS --set ingress.tls.enabled=false --set service.url=yourdomainforthebgproxy.acdh-dev.oeaw.ac.at
+- HELM_UPGRADE_EXTRA_ARGS --set ingress.tls.enabled=false --set service.url=yourdomainforthebgproxy.acdh-dev.oeaw.ac.at --set livenessProbe.command=/app/kubernetesCheck.sh
 - K8S_SECRET_TRIPLESTORE_URL http://193.170.85.102:8080/dbname
 - K8S_SECRET_TRIPLESTORE_HOST_HEADER triplestore.acdh-dev.oeaw.ac.at
 - K8S_SECRET_CACHE_TIMEOUT 604800
 - K8S_SECRET_DB_USER dbuser 
 - K8S_SECRET_DB_PASSWORD dbpassword
+- K8S_MAX_CACHE_SIZE maximumCacheSizeInBytes
 - WEB_CONCURRENCY 8
 
 ## Deployment on docker-tools
 
 * Use `PHPL` environment
-* Set `CACHE_TIMEOUT`, `DB_PASSWORD`, `DB_USER`, `TRIPLESTORE_HOST_HEADER` and `TRIPLESTORE_URL` env vars in the config.yaml using the `EnvVars` configuration property.
+* Set `CACHE_TIMEOUT`, `DB_PASSWORD`, `DB_USER`, `TRIPLESTORE_HOST_HEADER` and `TRIPLESTORE_URL` (and optionally `CACHE_MAX_SIZE`) env vars in the config.yaml using the `EnvVars` configuration property.
 
