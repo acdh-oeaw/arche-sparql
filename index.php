@@ -56,7 +56,7 @@ if (!$deny) {
 // caching
 $hash = sha1(filter_input(\INPUT_SERVER, 'REQUEST_URI') . filter_input(\INPUT_SERVER, 'QUERY_STRING') . json_encode($_POST));
 $path = $cacheDir . '/' . substr($hash, 0, 2) . '/' . substr($hash, 2, 2) . '/' . $hash;
-if (!$deny && file_exists($path) && time() - filemtime($path) <= $cacheValid) {
+if (!$deny && file_exists($path) && file_exists($path . 'headers') && time() - filemtime($path) <= $cacheValid) {
     $headers = explode("\n", file_get_contents($path . 'headers'));
     http_response_code(array_shift($headers));
     foreach ($headers as $h => $v) {
