@@ -50,7 +50,7 @@ if ($method === 'POST') {
     $deny      |= filter_input(\INPUT_POST, 'uri') !== null;
 }
 
-if (!$deny) {
+if (!$deny && $credentials !== ':') {
     $authHeader = 'Basic ' . base64_encode($credentials);
 }
 // caching
