@@ -1,4 +1,4 @@
-# php proxy for Blazegraph
+# php proxy for Blazegraph - ARCHE SPARQL public endpoint
 
 ## Deployment on Kubernetes
 
