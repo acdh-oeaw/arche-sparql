@@ -4,7 +4,7 @@
 
 To create new proxy for the Blazegraph database:
 1. Go to Rancher --> Workflow --> Create new workflow with the Docker image ghcr.io/acdh-oeaw/php-proxy-for-blazegraph:latest
-2. Variables and add follwoing variables:
+2. Add follwoing variables to the Rancher workflow:
 
   - TRIPLESTORE_URL http://193.170.85.102:8080/dbname
   - TRIPLESTORE_HOST_HEADER triplestore.acdh-dev.oeaw.ac.at
