@@ -1,7 +1,7 @@
 name: Create image and Deploy
 
 env:
-  IMAGE_TAG: arche-sparql:latest
+  IMAGE_TAG: php-proxy-for-blazegraph:latest
 on:
   push:
     branches:
