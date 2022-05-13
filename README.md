@@ -9,7 +9,7 @@ To create new proxy for the Blazegraph database, clone this project to the new p
 - CACHE_TIMEOUT 604800
 - DB_USER dbuser 
 - DB_PASSWORD dbpassword
-- K8S_MAX_CACHE_SIZE maximumCacheSizeInBytes
+- MAX_CACHE_SIZE maximumCacheSizeInBytes
 - WEB_CONCURRENCY 8
 
 Some settings must be set up by hand in Rancher:
