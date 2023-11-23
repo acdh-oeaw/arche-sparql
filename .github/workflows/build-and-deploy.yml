@@ -45,4 +45,4 @@ jobs:
     - name: Rancher Deploy Action
       run: |
         curl -i -X POST "${{ secrets.RANCHERURL_ARCHE_SPARQL }}?action=redeploy" -H "Authorization: Bearer ${{ secrets.RANCHER_BARER_TOKEN }}"
-        curl -i -X POST "${{ secrets.RANCHERURL_INTAVIA_SPARQL }}?action=redeploy" -H "Authorization: Bearer ${{ secrets.RANCHER_BARER_TOKEN }}"
+        curl -i -X POST "${{ secrets.RANCHERURL_SK_SPARQL }}?action=redeploy" -H "Authorization: Bearer ${{ secrets.RANCHER_BARER_TOKEN }}"
